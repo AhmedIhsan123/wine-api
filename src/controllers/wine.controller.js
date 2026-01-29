@@ -25,3 +25,23 @@ export const getWineById = (req, res) => {
 				.status(404)
 				.json({ message: `Wine with ID: ${id} not found!`, data: null });
 };
+
+// Method for creating/adding a wine
+export const createWine = (req, res) => {
+	// Get the name and year from the body
+	const { name, year } = req.body;
+
+	if (!name || !year) {
+		return res
+			.status(400)
+			.json({ message: "Wine name and year are required.", data: null });
+	}
+
+	// Create new wine
+	const newWine = service.create({ name, year });
+
+	// Return a good status
+	return res
+		.status(201)
+		.json({ message: "Wine created successfully", data: newWine });
+};
