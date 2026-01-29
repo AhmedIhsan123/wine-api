@@ -1,4 +1,4 @@
-import wines from "../data/wines.js";
+import wines from "../data/wine.js";
 
 let nextId = Math.max(...wines.map((w) => w.id)) + 1;
 
